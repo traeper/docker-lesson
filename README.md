@@ -63,6 +63,7 @@ dockerfile이 여러개인 경우 -f로 빌드할 dockerfile 이름을 가리킬
 ## compose
 
 * docker-compose.yaml 작성  
+<<<<<<< HEAD
 version과 services 정의, yaml 포맷 숙지 필요
 
 * mediawiki;  compose의 우수한 예제  
@@ -75,6 +76,9 @@ mediawiki.docker-compose.yaml 파일 생성 후 <https://hub.docker.com/_/mediaw
   volume : 컨테이너가 종료돼도 저장되는 디렉토리 선정
     * docker volume ls  
     volume은 docker 외부에 저장되는 데이터이지만 바깥에 쓰일 이름을 주지 않아서 이름 출력이 되지 않음. mediawiki
+=======
+
+>>>>>>> 814b553d875558fc188cbd6f37b4915135a0cb8d
 
 ## 트러블 슈팅
 
