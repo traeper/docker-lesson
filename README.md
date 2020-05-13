@@ -29,6 +29,11 @@ ubuntu:18.04에 /bin/bash 쉘 환경으로 연결(i: interaction, t:tty)
 * docker container ls -a  
 종료된 container들이 노출되므로 접속해서 로그를 확인하는 등 디버깅에 이용할 수 있음.
 docker run은 컨테이너 생성 -> 컨테이너 실행을 의미함
+만약 컨테이너를 생성하고 싶지 않으면 run 명령에 --rm 옵션을 추가
+* docker container prune
+종료된 모든 컨테이너를 제거
+* docker image prune
+사용되지 않는 모든 이미지를 제거
 
 ## docker - node 실행
 
@@ -42,21 +47,34 @@ Container, Linux가 있으므로 이 이미지를 실행하게 되면 도커 이
 * dockerfile 참고
 * docker 이미지 빌드 : docker build -t sample-app:latest .  
 결과로 docker 이미지가 생성된다. docker image ls 하면 보임.
-* docker stop {CONTAINER ID} stop을 하면 CMD로 걸어놓은 프로세스에 중단 요청을 날리고 해당 프로세스가 중단되면 빠져나오게됩니당
+* docker stop {CONTAINER ID} stop을 하면 CMD로 걸어놓은 프로세스에 중단 요청(SIGTERM)을 날리고 해당 프로세스가 중단되면 빠져나오게됩니당
 * docker run sample-app:latest  
 docker run $태그명:$버전명
+
+## dockerfile2 설명
+
+* docker build -f multi-stage.dockerfile -t sample-app:latest .  
+dockerfile이 여러개인 경우 -f로 빌드할 dockerfile 이름을 가리킬 수 있다.
+
+* docker run -d -p 8080:8080 sample-app:latest  
+-d : detach를 이용해서 컨테이너를 백그라운드에서 실행
+-p : 외부에 포트 공개
+
+## compose
+
+* docker-compose.yaml 작성  
+
+
+## 트러블 슈팅
+
+* docker history {IMAGE ID}  
+docker image build가 잘 되었는지 확인하기 위한 용도. 결과 로그가 출력
+
 * docker container exec -it {CONTAINER ID} /bin/sh  
-exec -it: 실행중인 컨테이너에 연결  
+exec -it: 실행중인 컨테이너에 연결, 내부에 빌드본이 어떻게 카피되었는지 확인할 수 있음.
 top을 찍어보면 node가 떠있음을 확인할 수 있음.  
 pkill node : node 프로세스 모두 종료 -> PID 1번으로 잡힌 프로세스가 꺼지면 컨테이너도 자동 종료
 
-## dockerfile2 설명  
-
-(실제로 수행 시 dockerfile로 이름 변경 후 수행)
-
-* docker build -t sample-app:latest .  
-
-## 기타
 
 ### 도움말
 
