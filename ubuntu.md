@@ -4,7 +4,7 @@
 
 ## jenkins
 * 설치
-sudo docker pull orchardup/jenkins
+sudo docker pull jenkins
 * 실행
 sudo docker run -d -p 80:8080 orchardup/jenkins
 
