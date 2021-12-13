@@ -10,6 +10,7 @@ sudo chown -R 1000:1000 /jenkins
 sudo docker pull jenkins/jenkins
 * 실행
 sudo docker run -d -p 80:8080 -v /jenkins:/var/jenkins_home jenkins
+* jenkins의 volume 디렉토리에 파일을 위치시키면 jenkins job에서 실행가능하다.
 
 ## mysql
 * 사전 준비
